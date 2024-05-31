@@ -1,18 +1,14 @@
 ##  URL Raiz 
 
-    `root to: "kittens index"`
-              kittens controller, index ação do método
+`root to: "kittens index"`  kittens é o controller, index ação do método
 
-    index =  o método dentro do controlador, apenas o método index definido no KittensController
+`index` é o método dentro do controlador, apenas o método index definido no  `KittensController`
 
-    Atenção: 
-    NÃO codifique os URLS, porque você não terá sorte quando você decidir alterar os URLs e 
-    ter que acessá-los manualmente e alterá-los você mesmo. 
+`def index end`
 
-    Rails fornece um método auxiliar que permite criar links chamados `link_to`, 
-        mas você precisará fornecer o texto que deseja mostrar e a URL para vinculá-lo.
+### Na página html
 
-   `link_to "Edit this post", edit_post_path(3) [gerar o caminho /posts/3/edit]`
+`link_to "Edit this post", edit_post_path(3) [gerar o caminho /posts/3/edit]`
 
 
     ################################################
