@@ -15,19 +15,14 @@ class PostsController < ApplicationController
   # Sabemos que isso será executado assim que recebermos o envio
   # formulário da nossa NOVA ação acima
   def create
-    # config um novo @post com as informações do formulário
+    @post = Post.new(allowed_post_params)
     if @post.save
-      # configurar mensagem de parabéns
-
-      # redirect_to post_path(@post.id) #mostra a página do post
-      redirect_to @post
-    # Observe que um atalho que você verá muitas vezes é, em vez de escrever redirect_to post_path(@post.id),
-    # apenas escreva redirect_to @postporque o Rails sabe que as pessoas faziam isso com tanta frequência que lhe deram
-    # a opção de escrevê-lo abreviadamente.
-
+        flash[:success] = "Great! Your post has been created!"
+        redirect_to post_path(@post.id)
+        # redirect_to @post
     else
-      # configurar mensagem de erro
-      render :new, status: :unprocessable_entity
+        flash.now[:error] = "Rats! Fix your mistekes, please"
+        render :new, status: :unprocessable_entity 
     end
   end
 
@@ -38,4 +33,14 @@ class PostsController < ApplicationController
   def update; end
 
   def destroy; end
+
+  private
+
+  def allowed_post_params
+    params.require(:post).permit(:title, :body, :author_id)
+  end
+
+  # Se você não fizesse isso, quando tentasse acessar params[:post] nada apareceria! 
+  # Além disso, se houver campos adicionais enviados dentro do hash, eles serão removidos e ficarão inacessíveis (para protegê-lo).
+
 end
