@@ -1,8 +1,6 @@
 ##  URL Raiz 
 
-  ```
-    root to: "kittens index" 
-  ```
+    `root to: "kittens index"`
               kittens controller, index ação do método
 
     index =  o método dentro do controlador, apenas o método index definido no KittensController
