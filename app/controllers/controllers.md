@@ -10,5 +10,15 @@ E se você quiser mostrar todas as postagens do seu blog na página de índice d
 Execute a #indexação do seu controlador de Postagens e ele pegará todas as suas postagens e as enviará para o `index.html.erb`
 arquivo de visualização. 
 
+>> posts_controller.rb 
 
+```
+class PostsController < ApplicationController
 
+  def index
+    @posts = Post.all
+    # displayed in the Index view (index.html.erb)
+  end
+```
+
+Nesta ação, temos o controlador solicitando algo ao modelo (“Ei, me dê todas as postagens!”), empacotando-as em uma variável de instância `@posts` para que a visualização possa usá-las e, em seguida, renderizará automaticamente a visualização em app/views/posts/index.html.erb
