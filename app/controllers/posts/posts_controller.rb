@@ -12,16 +12,21 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-
   # Sabemos que isso será executado assim que recebermos o envio
   # formulário da nossa NOVA ação acima
   def create
-     #config um novo @post com as informações do formulário
+    # config um novo @post com as informações do formulário
     if @post.save
-       #configurar mensagem de parabéns
-      redirect_to post_path(@post.id) #mostra a página do post
+      # configurar mensagem de parabéns
+
+      # redirect_to post_path(@post.id) #mostra a página do post
+      redirect_to @post
+    # Observe que um atalho que você verá muitas vezes é, em vez de escrever redirect_to post_path(@post.id),
+    # apenas escreva redirect_to @postporque o Rails sabe que as pessoas faziam isso com tanta frequência que lhe deram
+    # a opção de escrevê-lo abreviadamente.
+
     else
-        #configurar mensagem de erro
+      # configurar mensagem de erro
       render :new, status: :unprocessable_entity
     end
   end
