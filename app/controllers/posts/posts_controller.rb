@@ -33,21 +33,9 @@ class PostsController < ApplicationController
 
   def show; end
 
-  def edit
-    # code to find the post we want and send the
-    # user to the Edit view for it (edit.html.erb), which has a
-    # form for editing the post
-  end
+  def edit; end
 
-  def update
-    # code to figure out which post we're trying to update, then
-    # actually update the attributes of that post. Once that's
-    # done, redirect us to somewhere like the Show page for that
-    # post
-  end
+  def update; end
 
-  def destroy
-    # code to find the post we're referring to and
-    # destroy it.  Once that's done, redirect us to somewhere fun.
-  end
+  def destroy; end
 end
