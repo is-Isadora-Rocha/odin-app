@@ -12,9 +12,8 @@
     Rails fornece um método auxiliar que permite criar links chamados `link_to`, 
         mas você precisará fornecer o texto que deseja mostrar e a URL para vinculá-lo.
 
-  ```
-   link_to "Edit this post", edit_post_path(3) [gerar o caminho /posts/3/edit]
-  ```
+   `link_to "Edit this post", edit_post_path(3) [gerar o caminho /posts/3/edit]`
+
 
     ################################################
     ##                                            ##
