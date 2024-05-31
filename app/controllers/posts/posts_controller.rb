@@ -1,27 +1,32 @@
 class PostsController < ApplicationController
-
   def index
     @posts = Post.all
     # displayed in the Index view (index.html.erb)
     # temos o controlador solicitando algo ao modelo (“Ei, me dê todas as postagens!”), empacotando-as em uma variável de instância @posts
   end
 
-  def show
-    # code to grab the proper Post so it can be
-    # displayed in the Show view (show.html.erb)
-  end
-
   def new
-    # code to create an empty post and send the user
-    # to the New view for it (new.html.erb), which will have a
-    # form for creating the post
+    # Faça (mas não salve) um Post vazio para que o formulário que renderizamos saiba
+    # quais campos usar e onde enviar o formulário
+    # Essa ação vai renderizar app/views/posts/new.html.erb assim que terminar
+    @post = Post.new
   end
 
+
+  # Sabemos que isso será executado assim que recebermos o envio
+  # formulário da nossa NOVA ação acima
   def create
-    # code to create a new post based on the parameters that
-    # were submitted with the form (and are now available in the
-    # params hash)
+     #config um novo @post com as informações do formulário
+    if @post.save
+       #configurar mensagem de parabéns
+      redirect_to post_path(@post.id) #mostra a página do post
+    else
+        #configurar mensagem de erro
+      render :new, status: :unprocessable_entity
+    end
   end
+
+  def show; end
 
   def edit
     # code to find the post we want and send the
@@ -40,5 +45,4 @@ class PostsController < ApplicationController
     # code to find the post we're referring to and
     # destroy it.  Once that's done, redirect us to somewhere fun.
   end
-
 end
