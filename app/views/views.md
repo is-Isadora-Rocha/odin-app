@@ -11,7 +11,10 @@ No diretório `app/views/controller_name/action_name.html.erb`
 
 que foram vinculadas e executadas, respectivamente, antes de renderizar a visualização.
 
-O `Posts` controlador que executa a ação `#index` redenrizará implicitamente  a `app/views/posts/index.html.erb`. 
+O `Posts` controlador que executa a ação `#index` redenrizará implicitamente  a `app/views/posts/index.html.erb`.
+
+
+### <% e <%= 
 
 A diferença entre `<%` e `<%=` é que a versão`<%=` realmente exibe tudo o que é retornado dentro das tags ERB. Se você usar `<%`, ele executará o código, mas, não importa o que seja retornado por essa linha, na verdade não exibirá nada em seu modelo HTML. 
 `<%#` é usado para comentar e não será executado.
@@ -26,4 +29,18 @@ A diferença entre `<%` e `<%=` é que a versão`<%=` realmente exibe tudo o que
   <% else %>
     <strong>You must sign in!</strong>
   <% end %>
+```
+
+### PARTIALS
+
+Um exemplo é o formulário para criação ou edição de usuários. Ambas as ações `#new`e `#edit`precisam renderizar algum tipo de formulário para o usuário, e geralmente esse formulário é quase exatamente o mesmo. Freqüentemente, as pessoas transformam esse formulário em um novo arquivo chamado algo parecido `_user_form.html.erb`e, em seguida, basta chamá-lo nos modelos `new.html.erb`e `edit.html.erb`visualizar onde for necessário.
+
+Recuando um pouco, os parciais são apenas arquivos HTML que não foram feitos para serem completos, mas podem ser compartilhados por outros arquivos.
+
+```
+  # app/views/users/new.html.erb
+  <div class="new-user-form">
+  <%= render "user_form" %>
+  </div>
+
 ```
