@@ -19,8 +19,8 @@ A diferença entre `<%` e `<%=` é que a versão`<%=` realmente exibe tudo o que
 ```
   <% if current_user.signed_in? %>
     <ul>
-      <% @users.each do |user| %>
-        <li><%= user.first_name %></li>
+      <% @users.each do |user| %> # puramente relacionadas ao código
+        <li><%= user.first_name %></li> # exibe variáveis de instância do controlador
       <% end %>
     </ul>
   <% else %>
