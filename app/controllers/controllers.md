@@ -12,6 +12,9 @@ arquivo de visualização.
 
 > > posts_controller.rb
 
+`rails generate controller Models method`
+`rails g controller Posts index`
+
 ```
 class PostsController < ApplicationController
 
