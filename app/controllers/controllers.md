@@ -10,10 +10,21 @@ E se você quiser mostrar todas as postagens do seu blog na página de índice d
 Execute a #indexação do seu controlador de Postagens e ele pegará todas as suas postagens e as enviará para o `index.html.erb`
 arquivo de visualização.
 
-> > posts_controller.rb
+# MAS ANTES
 
-`rails generate controller Models method`
-`rails g controller Posts index`
+### EM ROUTES.RB
+
+```
+get "/articles", to: "articles#index"
+```
+
+A rota acima declara que `GET /articles` as solicitações são mapeadas para a index ação de ArticlesController.
+
+<span> Para criar ArticlesController e sua indexação, executaremos o gerador do controlador (com a --skip-routes opção porque já temos uma rota apropriada) </span>
+
+`bin/rails generate controller Articles index --skip-routes`
+
+> > posts_controller.rb
 
 ```
 class PostsController < ApplicationController
